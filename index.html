@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="./main.js"></script>
+    <title>Vite App</title>
+  </head>
+  <body class="p-4">
+    <!--Throttling-->
+    <div id="throttle" href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Throttling</h5>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        Normal Count : <span id="n_count"></span>
+      </p>
+      <p class="font-normal text-gray-700 dark:text-gray-400">
+        Throttle Count : <span id="t_count"></span>
+      </p>
+      <button type="button" class="mt-4" onclick="tryThrottle()" id="app"> Multiple click Here</button>
+    </div>
+    <!--Debouncing-->
+     <!--Throttling-->
+     <div id="debouce" href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Debouncing</h5>
+      <div>
+        <label for="txt_debounce" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter text</label>
+        <input onkeyup="myDebounce(processText)" type="text" id="txt_debounce" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter text">
+      </div>
+      <p>Normal text: <span class="text-blue-500" id="normalText"></span></p>
+      <p>Debounced text: <span class="text-blue-500" id="debounceText"></span></p>
+      
+    </div>
+    <!--Debouncing-->
+  </body>
+</html>
+
+
