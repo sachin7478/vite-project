@@ -1,7 +1,10 @@
 // ================== throttling ===============
 let ncount = 0;
 let tcount = 0;
+var apiResponse = {};
 let boolThrottle = true;
+let selectNode = document.querySelector('#callApiDiv > #selUsers');
+selectNode.style.display = 'none';
 function tryThrottle() {
   const div = document.getElementById("throttle");
   div.querySelector("#n_count").innerHTML = ncount++;
@@ -103,6 +106,84 @@ function tryCurryClosure() {
 // }
 // split(str);
 
-let arr = [1, 2, 3, 4, 5, 6, 7];
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(arr.splice(3, 1), arr);
 
-console.log(arr.splice(3, 1), arr);
+// ===== Promise ======================
+const tryPromise = (action) => {
+  let para = document.querySelector("#promiseDiv > #resPromise");
+
+  console.log();
+  para.innerHTML = "";
+  // Promise creation
+  const myPromise = new Promise((resolve, reject) => {
+    const t = 1500;
+    if (action === "resolve") {
+      setTimeout(() => resolve("Promise Resolved"), t);
+    } else if (action === "reject") {
+      setTimeout(() => {
+        reject(new Error("Oops - Some Error"));
+      }, t);
+    }
+  });
+
+  const span = document.createElement("span");
+  myPromise
+    .then((data) => {
+      // Resolve state block will run before finally block
+      console.log("Resolved");
+      span.className = "text-green-400 text-bold";
+      span.textContent = data;
+      para.appendChild(span);
+    })
+    .catch((err) => {
+      // this will run after finally block
+      console.log("Rejected");
+      span.className = "text-red-500 text-bold";
+      span.textContent = "Please watch console";
+      para.appendChild(span);
+      throw err;
+    })
+    .finally(() => {
+      // finaly block will run before catch/reject/throw
+      // finaly block will run After resolve state
+      console.log("Finally");
+    });
+};
+// ====End Promise ====================
+
+// ===== Git Api ========================
+const tryGitApi = () => {
+  selectNode.textContent = '';
+  async function getData() {
+    await fetch("https://api.github.com/users")
+      .then((res) => res.json())
+      .then((data) => {
+        data = data.splice(0,5)
+        apiResponse = data;
+        loadData(apiResponse);
+      })
+      .catch((err) => {
+        console.log("Error cought " + err);
+      })
+      .finally(() => {
+        // console.log("finally");
+      });
+  }
+  getData();
+  function loadData(userData) {
+    if(apiResponse.length) {
+      apiResponse.forEach((item, index) => {
+        let option = document.createElement('option');
+        option.value = item.login;
+        option.textContent = item.login;
+        if(index === 0) {
+          option.selected = true;
+        }
+        selectNode.appendChild(option);
+      })
+      selectNode.style.display = 'block';
+    }
+  }
+};
+// ===== Git Api ========================
