@@ -1,32 +1,18 @@
 <html>
-    
-    <script defer src="./cartoon.js"></script>
-    <link rel="style" href ="./cartoon.css">
+    <head>
+        <title>mypage</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="./style.css" />
+    </head>
     <body>
-        <div id="containter">
-            Select Cartoon  :  
-            <select id="selectt" onchange="selCartoon()">
-            </select>
-        </div>
-        <div id="show">          
+        <h1>Hi</h1>
+        <div class="container">
+            <div>
+                Select Cartoon : 
+                <select onchange="loadSelectedOption(this.value)" id="sel"></select>
+            </div>
+            <div id="output"></div>
         </div>
     </body>
-    
 </html>
-
-<style>
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    div{
-        margin: 10px;
-    }
-
-    #show{
-        background-color: aquamarine;
-        font-weight: 800;
-    }
-</style>
+<script src="./index.js"></script>
