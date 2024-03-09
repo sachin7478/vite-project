@@ -1,0 +1,15 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+div {
+    margin-top: 10px;
+}
+table, tr, th, td {
+    border:1px solid black;
+}
+th, td {
+    padding : 2px
+}
